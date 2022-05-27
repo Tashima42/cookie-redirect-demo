@@ -10,10 +10,18 @@
     <main>
         <h1>Cookie redirect demo</h1>  
     </main>
-    <h3>Set Cookie</h3>
-    <button onclick="setAuthenticationCookie()">Set Cookie</button>
-    <h3>Delete Cookie</h3>
-    <button onclick="deleteAuthenticationCookie()">Delete Cookie</button>
+    <h2>#1 - Login</h2>
+    <p>When the user logins in Digicel ID, it sets an authentication cookie</p>
+    <button onclick="setAuthenticationCookie()">Set Cookie (Simulate login)</button>
+    <h2>#2 - Logout and redirect</h2>
+    <p>This should happen automatically, without clicking in a button.</p>
+    <p>When the user is redirected to this page, the authentication cookie is erased and the user redirected to the login page</p>
+    <p>This only works if this page is in the same domain as the login page (digicelgroup.com)</p>
+    <ol>
+      <li>Erase Authentication Cookie</li>
+      <li>Redirect user to <a href="https://product-staging.digicelgroup.com/aapprofile2/permissions.do">https://product-staging.digicelgroup.com/aapprofile2/permissions.do</a></li>
+    </ol>
+    <button onclick="deleteAuthenticationCookie()">Logout and go to login</button>
 	<script src="index.js"></script>
   </body>
 </html>

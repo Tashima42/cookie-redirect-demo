@@ -11,6 +11,11 @@ function setAuthenticationCookie() {
   console.log(getCookie(cookieName))
 }
 
+function redirectToLogin() {
+  const query = window.location.href.split("?")[1];
+  location.href = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?' + encodeURIComponent(query);
+}
+
 function deleteAuthenticationCookie() {
   eraseCookie(cookieName);
 }
