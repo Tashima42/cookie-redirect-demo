@@ -1,6 +1,7 @@
 "use-strict";
 
 const cookieName = "Authentication-Cookie";
+const query = window.location.href.split("?")[1];
 
 function setAuthenticationCookie() {
   console.log("Setting authentication cookie");
@@ -9,10 +10,10 @@ function setAuthenticationCookie() {
   console.log({cookieName, value, days});
   setCookie(cookieName, value, days);
   console.log(getCookie(cookieName))
+  location.href = 'https://tashima42.github.io/cookie-redirect-demo/logout.html?' + encodeURIComponent(query);
 }
 
 function redirectToLogin() {
-  const query = window.location.href.split("?")[1];
   location.href = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?' + encodeURIComponent(query);
 }
 
