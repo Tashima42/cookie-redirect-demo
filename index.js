@@ -19,6 +19,7 @@ function redirectToLogin() {
 
 function deleteAuthenticationCookie() {
   eraseCookie(cookieName);
+  redirectToLogin()
 }
 
 function setCookie(name, value, days) {
