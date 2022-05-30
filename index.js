@@ -10,11 +10,11 @@ function setAuthenticationCookie() {
   console.log({cookieName, value, days});
   setCookie(cookieName, value, days);
   console.log(getCookie(cookieName))
-  window.location.href = 'https://tashima42.github.io/cookie-redirect-demo/logout.html?' + decodeURIComponent(query);
+  window.location.replace('https://tashima42.github.io/cookie-redirect-demo/logout.html?' + decodeURIComponent(query));
 }
 
 function redirectToLogin() {
-  window.location.href = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?' + decodeURIComponent(query);
+  window.location.replace('https://product-staging.digicelgroup.com/aapprofile2/permissions.do?' + decodeURIComponent(query));
 }
 
 function deleteAuthenticationCookie() {
