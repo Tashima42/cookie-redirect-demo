@@ -26,7 +26,7 @@
         margin: 8px 0;
         border: none;
         cursor: pointer;
-        width: 50px;
+        width: 200px;
         border-radius: 5px;
       }
     </style>
@@ -49,7 +49,7 @@
       "use-strict";
       const loginRedirectPage = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?'
       let query = window.location.href.split("?")[1]
-      query = query ? query : ""
+      query = query ? query : "error=missing_required_paramters"
 
       function redirectToLogin() {
         window.location.replace(loginRedirectPage + decodeURIComponent(query));
