@@ -26,34 +26,36 @@
         margin: 8px 0;
         border: none;
         cursor: pointer;
-        width: 10%;
+        width: 50px;
         border-radius: 5px;
       }
     </style>
   </head>
   <body>
     <h1>Redirecting to login...</h1>
-    <button onclick="deleteAuthenticationCookie()">Go to login page</button>
+    <button onclick="redirectToLogin()">Go to login page</button>
+    <%
+      Cookie[] array= request.getCookies(); 
+      for(int i=0; i<array.length; i++)
+      {
+        if(array[i].getName().equals("Authentication-Cookie"))
+        {
+          array[i].setMaxAge(0);
+          response.addCookie(array[i]);
+        } 
+      }
+    %>
     <script >
       "use-strict";
-
-      const cookieName = "Authentication-Cookie";
       const loginRedirectPage = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?'
-      const query = window.location.href.split("?")[1];
+      let query = window.location.href.split("?")[1]
+      query = query ? query : ""
 
-
-      function deleteAuthenticationCookie() {
-        eraseCookie(cookieName);
-        redirectToLogin()
-      }
-      function eraseCookie(name) {
-        document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      }
       function redirectToLogin() {
         window.location.replace(loginRedirectPage + decodeURIComponent(query));
       }
 
-      deleteAuthenticationCookie()
+      redirectToLogin()
     </script>
   </body>
 </html>
