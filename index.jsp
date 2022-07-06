@@ -34,27 +34,18 @@
   <body>
     <h1>Redirecting to login...</h1>
     <button onclick="redirectToLogin()">Go to login page</button>
-    <%
-      Cookie[] array= request.getCookies(); 
-      for(int i=0; i<array.length; i++)
-      {
-        if(array[i].getName().equals("Authentication-Cookie"))
-        {
-          array[i].setMaxAge(0);
-          response.addCookie(array[i]);
-        } 
-      }
-    %>
     <script >
       "use-strict";
-      const loginRedirectPage = 'https://product-staging.digicelgroup.com/aapprofile2/permissions.do?'
-      let query = window.location.href.split("?")[1]
-      query = query ? query : "error=missing_required_paramters"
-
-      function redirectToLogin() {
-        window.location.replace(loginRedirectPage + decodeURIComponent(query));
-      }
-
+       function redirectToLogin() {
+              fetch('https://product-staging.digicelgroup.com/aapprofile2/management/logout.do',{
+                      mode: 'no-cors'
+                    })
+              .then((ev) => {
+                const query = window.location.href.split("?")[1];
+                  window.location.replace('https://product-staging.digicelgroup.com/aapprofile2/permissions.do?' + decodeURIComponent(query));
+            })
+            .catch((e) => console.error(e))
+    }
       redirectToLogin()
     </script>
   </body>
